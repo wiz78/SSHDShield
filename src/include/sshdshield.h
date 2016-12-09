@@ -19,9 +19,10 @@
 #include "settings.h"
 #include "failedPwd.h"
 #include "bannedHost.h"
-#include "hash_map.h"
 
 #include <list>
+#include <string>
+#include <unordered_map>
 
 using namespace std;
 
@@ -36,8 +37,8 @@ public:
 	void				Quit( void )		{ Running = false; }
 
 private:
-	typedef hash_map<string, FailedPwd *>	failuresHash;
-	typedef hash_map<string, bool>			bannedHash;
+	typedef unordered_map<string, FailedPwd *>	failuresHash;
+	typedef unordered_map<string, bool>			bannedHash;
 	
 	string				CfgName;
 	Settings			Cfg;

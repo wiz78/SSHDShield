@@ -17,25 +17,27 @@
 #define SETTINGS_H
 
 #include <vector>
+#include <string>
+#include <unordered_map>
 
-#include "hash_map.h"
-    
+using namespace std;    
+
 class Settings
 {
 public:
-	void						Load( const string &file );
+	void							Load( const string &file );
 
-	string						GetString( const string &section, const string &key, const string& def = "" );
-	vector<string>				GetStringVector( const string &section, const string &key );
-	int							GetInt( const string &section, const string &key, int def = 0 );
+	string							GetString( const string &section, const string &key, const string& def = "" );
+	vector<string>					GetStringVector( const string &section, const string &key );
+	int								GetInt( const string &section, const string &key, int def = 0 );
 	
-	const vector<string>&		GetSections( void ) const { return( Sections ); }
+	const vector<string> 			&GetSections( void ) const { return( Sections ); }
 
 private:
-	hash_map<string, string>	Cfg;
-	vector<string>				Sections;
+	unordered_map<string, string>	Cfg;
+	vector<string>					Sections;
 	
-	string						GetHashKey( const string& section, const string& key ) const;
+	string							GetHashKey( const string& section, const string& key ) const;
 };
 
 #endif /* SETTINGS_H */

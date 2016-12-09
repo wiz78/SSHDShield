@@ -39,8 +39,8 @@ public:
 	static void		Setup( void );
 	static void		Cleanup( void );
 
-	static void		Log( int level, char *fmt, ... );
-	static void		VLog( int level, char *fmt, va_list ap );
+	static void		Log( int level, const char *fmt, ... );
+	static void		VLog( int level, const char *fmt, va_list ap );
 
 	static void		SetLogToStdErr( bool log )	{ LogToStdErr = log; }
 	static void		SetLogToSysLog( bool log )	{ LogToSysLog = log; }

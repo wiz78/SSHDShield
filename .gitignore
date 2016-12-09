@@ -2,3 +2,8 @@ autom4te.cache
 config.log
 Makefile
 src/Makefile
+src/sshdshield/.deps
+src/include/stamp-h1
+*.o
+
+*.swp

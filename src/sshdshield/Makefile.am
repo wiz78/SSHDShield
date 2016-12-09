@@ -4,7 +4,7 @@ MAINTAINERCLEANFILES = Makefile.in
 
 sbin_PROGRAMS		= sshdshield
 
-INCLUDES			= -I$(top_srcdir) -I$(top_srcdir)/include
+AM_CPPFLAGS			= -I$(top_srcdir) -I$(top_srcdir)/include
 
 sshdshield_SOURCES	= main.cpp sshdshield.cpp utils.cpp settings.cpp \
 					  failedPwd.cpp logger.cpp

@@ -42,7 +42,7 @@ int main( int argc, const char *argv[] )
 	}
 	catch( const EWrongArgs& e ) {
 		fprintf( stderr,
-				 PACKAGE" v"VERSION" - (c) by Simone Tellini <tellini@users.sourceforge.net>\n"
+				 PACKAGE " v" VERSION " - (c) by Simone Tellini <tellini@users.sourceforge.net>\n"
 			     "\n"
 				 "This program is free software; you can redistribute it and/or modify\n"
 				 "it under the terms of the GNU General Public License as published by\n"

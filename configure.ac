@@ -12,7 +12,7 @@ dnl -----------------------------------
 dnl Setup
 dnl -----------------------------------
 
-AC_INIT(SSHDShield, 1.1, tellini@users.sourceforge.net)
+AC_INIT(SSHDShield, 1.2, tellini@users.sourceforge.net)
 AC_CONFIG_SRCDIR(src/Makefile.am)
 
 AC_CONFIG_AUX_DIR(config)
@@ -21,6 +21,8 @@ AM_CONFIG_HEADER(src/include/config.h:src/include/config-h.in)
 AM_INIT_AUTOMAKE([dist-bzip2])
 
 AC_LANG([C++])
+
+AX_CXX_COMPILE_STDCXX([11])
 
 AC_PREFIX_DEFAULT(/usr/local)
 

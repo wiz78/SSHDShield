@@ -81,13 +81,20 @@ bool SSHDShield::Daemonize( void )
 			// closing them is a *bad* idea: some libraries
 			// we use may think it could be nice to use them,
 			// causing havoc
-			freopen( "/dev/null", "r", stdin  );
-			freopen( "/dev/null", "w", stdout );
-			freopen( "/dev/null", "w", stderr );
+			if( !freopen( "/dev/null", "r", stdin  ))
+				Logger::Log( LOG_INFO, "couldn't reopen stdin" );
+
+			if( !freopen( "/dev/null", "w", stdout ))
+				Logger::Log( LOG_INFO, "couldn't reopen stdout" );
+			
+			if( !freopen( "/dev/null", "w", stderr ))
+				Logger::Log( LOG_INFO, "couldn't reopen stderr" );
 
 			setsid();
 			umask( 027 );
-			chdir( "/" );
+			
+			if( chdir( "/" ))
+				Logger::Log( LOG_INFO, "couldn't chdir( \"/\" )" );
 		}
 	}
 

@@ -37,7 +37,7 @@ void Logger::Cleanup( void )
 	closelog();
 }
 //--------------------------------------------------------------------------
-void Logger::Log( int level, char *fmt, ... )
+void Logger::Log( int level, const char *fmt, ... )
 {
 	va_list		ap;
 
@@ -48,7 +48,7 @@ void Logger::Log( int level, char *fmt, ... )
 	va_end( ap );
 }
 //--------------------------------------------------------------------------
-void Logger::VLog( int level, char *fmt, va_list ap )
+void Logger::VLog( int level, const char *fmt, va_list ap )
 {
 #ifdef HAVE_VSYSLOG
 	if( LogToSysLog )
