@@ -3,7 +3,7 @@ config.log
 Makefile
 src/Makefile
 src/sshdshield/.deps
+src/sshdshield/sshdshield
 src/include/stamp-h1
 *.o
-
 *.swp
