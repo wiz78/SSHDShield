@@ -1,0 +1,78 @@
+SSHDShield                https://github.com/wiz78/SSHDShield
+
+
+What is it?
+===========
+
+SSHDShield is a daemon that monitors your sshd log looking for signs of a brute force
+attack. Upon detecting it, it will call a configurable command to ban the host. Bans
+will be removed after a configurable time span.
+
+
+Who did it?
+===========
+
+Simone Tellini, <tellini@users.sourceforge.net>
+https://tellini.info/
+
+
+Show your support
+=================
+
+If you use this software in a production environment and/or
+you wish to show your support, you can get me something off
+one of the Amazon wish-lists of mine, located at 
+
+http://www.amazon.co.uk/exec/obidos/registry/1K4OWZ581SIRE/ref%3Dwl%5Fs%5F3/026-2575462-0900418
+
+or
+
+http://www.amazon.com/gp/registry/4HTWP4885GSB/102-7143304-5385735
+
+
+Installation
+============
+
+"./configure; make install" should compile and install the sshdshield executable
+in your sbin directory. 
+
+
+Usage
+=====
+
+You need to pass the name of the config file to use on the command line. 
+An example configuration file is shown below:
+
+
+                              ---8<---8<---
+[General]
+; log to monitor
+LogPath			= /var/log/messages
+; consider only the lines with this ident string
+SSHIdent		= sshd
+
+[PasswordFailures]
+; defaults: 3 failures per minute
+MaxAllowed		= 3
+Interval		= 60
+
+[Ban]
+; ban time, in seconds
+BanTime			= 7200
+; command to ban the host %h
+BanCmd			= /sbin/iptables -A banned -s %h -j DROP
+; command to remove the ban
+UnbanCmd		= /sbin/iptables -D banned -s %h -j DROP
+
+[Strings]
+; block hosts as soon as they try to authenticate as a non-existant user. This line
+; contains a string to look for in the log to apply this rule
+InvalidUser  	= invalid user
+; string used by your sshd daemon when a user enters a wrong password
+WrongPassword	= failed password
+; the word just before the host address in the logs
+HostPrefix		= from 
+                              ---8<---8<---
+
+You need to restart sshdshield after changing the configuration.
+
